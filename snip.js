@@ -19,11 +19,19 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 		let id = link.pathname.replace('/questions/', '')
 		id = id.substr(0, id.indexOf('/'))
 
+		let rescont = document.getElementsByClassName('IsZvec')[i]
+
 		// Request to StackOverflow's API to get the answers
 		httpRequest(`https://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow&filter=!b6AubVkmmBt14D`, function (data) {
 			data = JSON.parse(data)
 
 			if (data.quota_remaining > 0) {
+				let otherlinks = ""
+				for (let j = rescont.getElementsByTagName('div').length; j-- > 0;) {
+					if (rescont.getElementsByTagName('div')[j].dataset.ved != undefined) {
+						otherlinks = '<span class="res-related">Related links</span>' + rescont.getElementsByTagName('div')[j].outerHTML
+					}
+				}
 				ans = data.items[0]
 
 				let type
@@ -35,7 +43,7 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 				let body = ans.body
 				let score = ans.score
 
-				document.getElementsByClassName('IsZvec')[i].innerHTML = `
+				rescont.innerHTML = `
 					<div class="cs-card" id="cs-card-${i}">
 						<div class="cs-card-content">
 							<span class="cs-card-info">${type} solution - Score: ${score}</span>
@@ -43,9 +51,11 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 							<div class="cs-card-answer">${body}</div>
 						</div>
 					</div>
+
+					${otherlinks}
 				`
 			} else {
-				document.getElementsByClassName('IsZvec')[i].innerHTML = "<i>codesearch is rate-limited by StackOverflow's API. The limitation is reset every day.</i><br>" + document.getElementsByClassName('IsZvec')[i].innerHTML
+				rescont.innerHTML = "<i>codesearch is rate-limited by StackOverflow's API. The limitation is reset every day.</i><br>" + rescont.innerHTML
 			}
 		})
 	}
