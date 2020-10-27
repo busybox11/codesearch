@@ -2,7 +2,8 @@
     margin-top: .75rem; 
     border-radius: .75rem;
     width: 100%;
-    max-height: 20rem;
+
+    overflow: hidden;
 
     background: #2a2a2a;
     color: white;
@@ -12,7 +13,7 @@
     margin: 1.5rem;
 }
 
-.cs-card-type {
+.cs-card-info {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     margin-bottom: .6rem;
@@ -21,4 +22,23 @@
 
 .cs-card-answer {
     overflow: auto;
+    max-height: 15rem;
 }
+
+
+pre {
+    background: #1a1a1a;
+    counter-reset: line;
+    overflow: auto;
+}
+
+/* WIP - LINE COUNT
+ * pre code:before {
+ *     counter-increment: line;
+ *     content: counter(line);
+ *     display: inline-block;
+ *     padding: 0 .5em;
+ *     margin-right: .5em;
+ *     color: #888
+ * }
+ */
