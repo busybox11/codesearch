@@ -43,3 +43,29 @@ pre {
  *     color: #888
  * }
  */
+
+/* ========== */
+/* SCROLLBARS */
+
+/* Answer */
+.cs-card-answer::-webkit-scrollbar {
+    background-color: #131616;
+    color: #b9af9d;
+}
+
+/* Code blocks */
+pre::-webkit-scrollbar {
+    background-color: #1a1a1a;
+    color: #b9af9d;
+}
+
+/* Common */
+.cs-card-answer::-webkit-scrollbar-corner,
+pre::-webkit-scrollbar-corner {
+    background-color: #090b0c;
+}
+
+.cs-card-answer::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+    background-color: #404444;
+}
