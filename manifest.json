@@ -6,7 +6,8 @@
 	"content_scripts": [
 		{
 			"matches": ["*://*.google.com/*"],
-			"js": ["snip.js"]
+			"js": ["snip.js"],
+			"css": ["snip.css"]
 		}
 	],
 	"manifest_version": 2
