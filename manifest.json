@@ -6,8 +6,8 @@
 	"content_scripts": [
 		{
 			"matches": ["*://*.google.com/*"],
-			"js": ["snip.js"],
-			"css": ["snip.css"]
+			"js": ["snip.js", "hjs/highlight.min.js"],
+			"css": ["snip.css", "hjs/default.min.css"]
 		}
 	],
 	"manifest_version": 2

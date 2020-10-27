@@ -54,6 +54,10 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 
 					${otherlinks}
 				`
+
+				rescont.querySelectorAll('pre code').forEach((block) => {
+					hljs.highlightBlock(block)
+				})
 			} else {
 				rescont.innerHTML = "<i>codesearch is rate-limited by StackOverflow's API. The limitation is reset every day.</i><br>" + rescont.innerHTML
 			}
