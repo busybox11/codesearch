@@ -1,7 +1,9 @@
 console.log('hey google')
 
-for (var i = document.links.length; i-- > 0;) {
-	if (document.links[i].classList.length == 0 && document.links[i].host == "stackoverflow.com") {
-		console.log(i, document.links[i])
+for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
+	let link = document.getElementsByClassName('rc')[i].getElementsByTagName('a')[0]
+	if (link.host == "stackoverflow.com") {
+		console.log(i, link)
+		link.outerHTML += "Found link"
 	}
 }
