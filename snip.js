@@ -22,26 +22,31 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 		// Request to StackOverflow's API to get the answers
 		httpRequest(`https://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow&filter=!b6AubVkmmBt14D`, function (data) {
 			data = JSON.parse(data)
-			ans = data.items[0]
 
-			let type
-			if (ans.is_accepted) {
-				type = "Verified"
-			} else {
-				type = "Top"
-			}
-			let body = ans.body
-			let score = ans.score
+			if (data.quota_remaining > 0) {
+				ans = data.items[0]
 
-			document.getElementsByClassName('IsZvec')[i].innerHTML = `
-				<div class="cs-card" id="cs-card-${i}">
-					<div class="cs-card-content">
-						<span class="cs-card-info">${type} solution - Score: ${score}</span>
+				let type
+				if (ans.is_accepted) {
+					type = "Verified"
+				} else {
+					type = "Top"
+				}
+				let body = ans.body
+				let score = ans.score
 
-						<div class="cs-card-answer">${body}</div>
+				document.getElementsByClassName('IsZvec')[i].innerHTML = `
+					<div class="cs-card" id="cs-card-${i}">
+						<div class="cs-card-content">
+							<span class="cs-card-info">${type} solution - Score: ${score}</span>
+
+							<div class="cs-card-answer">${body}</div>
+						</div>
 					</div>
-				</div>
-			`
+				`
+			} else {
+				document.getElementsByClassName('IsZvec')[i].innerHTML = "<i>codesearch is rate-limited by StackOverflow's API. The limitation is reset every day.</i><br>" + document.getElementsByClassName('IsZvec')[i].innerHTML
+			}
 		})
 	}
 }
