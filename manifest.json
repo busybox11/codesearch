@@ -1,0 +1,13 @@
+{
+	"name": "codesearch",
+	"version": "1.0",
+	"description": "Quickly find code snippets on your search results",
+	"permissions": ["tabs", "*://*.google.com/*"],
+	"content_scripts": [
+		{
+			"matches": ["*://*.google.com/*"],
+			"js": ["snip.js"]
+		}
+	],
+	"manifest_version": 2
+}
