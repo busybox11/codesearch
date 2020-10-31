@@ -2,7 +2,7 @@
 	"name": "codesearch",
 	"version": "1.0",
 	"description": "Quickly find code snippets on your search results",
-	"permissions": ["tabs", "*://*.google.com/*"],
+	"permissions": ["tabs", "webRequest", "*://*.google.com/*"],
 	"content_scripts": [
 		{
 			"matches": ["*://*.google.com/*"],
