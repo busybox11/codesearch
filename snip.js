@@ -9,7 +9,7 @@ for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
 		let rescont = document.getElementsByClassName('IsZvec')[i]
 
 		// Request to StackOverflow's API to get the answers
-		content.fetch(`https://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow&filter=!b6AubVkmmBt14D`).then(data => {
+		fetch(`https://api.stackexchange.com/2.2/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow&filter=!b6AubVkmmBt14D`).then(data => {
 			data = data.json()
 			data.then(function(data) {
 				if (data.quota_remaining > 0) {
