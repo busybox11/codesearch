@@ -1,5 +1,5 @@
-for (let i = document.getElementsByClassName('rc').length; i-- > 0;) {
-	let link = document.getElementsByClassName('rc')[i].getElementsByTagName('a')[0]
+for (let i = document.getElementsByClassName('yuRUbf').length; i-- > 0;) {
+	let link = document.getElementsByClassName('yuRUbf')[i].getElementsByTagName('a')[0]
 	if (link.host == "stackoverflow.com" && link.pathname.startsWith('/questions/')) {
 		let id = link.pathname.replace('/questions/', '')
 		id = id.substr(0, id.indexOf('/'))
